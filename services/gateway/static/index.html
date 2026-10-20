@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sensor BI Dashboard</title>
+<link rel="stylesheet" href="/static/dashboard.css?v=2">
+</head>
+<body>
+<div class="viz-root">
+  <header class="top">
+    <div>
+      <h1>Environmental Sensor Analytics</h1>
+      <p class="sub">Real-time BI over the Kubernetes pipeline · <span id="asof">connecting…</span></p>
+    </div>
+    <div class="controls">
+      <span id="live" class="pill">○ offline</span>
+      <label>Metric
+        <select id="metric">
+          <option value="pm25">PM2.5 (µg/m³)</option>
+          <option value="aqi">AQI</option>
+          <option value="temperature_c">Temperature (°C)</option>
+          <option value="humidity">Humidity (%)</option>
+          <option value="co2">CO₂ (ppm)</option>
+          <option value="pressure_hpa">Pressure (hPa)</option>
+          <option value="pm10">PM10 (µg/m³)</option>
+        </select>
+      </label>
+      <label>Range
+        <select id="range">
+          <option value="0.25">Last 15 min</option>
+          <option value="1" selected>Last 1 hour</option>
+          <option value="6">Last 6 hours</option>
+          <option value="24">Last 24 hours</option>
+        </select>
+      </label>
+    </div>
+  </header>
+
+  <section class="tiles" id="tiles"></section>
+
+  <section class="grid">
+    <article class="card wide">
+      <h2 id="trend-title">PM2.5 by zone</h2>
+      <p class="hint" id="trend-hint">1-minute rolling average</p>
+      <div class="legend" id="trend-legend"></div>
+      <div class="chart" id="trend"></div>
+    </article>
+
+    <article class="card">
+      <h2>Current AQI by zone</h2>
+      <p class="hint">Mean of each sensor's latest reading · tick marks the zone's worst sensor</p>
+      <div class="chart" id="zones"></div>
+    </article>
+
+    <article class="card">
+      <h2>Sensor field · latest AQI</h2>
+      <p class="hint">One cell per sensor, darker is worse · ringed cells are anomalous</p>
+      <div id="field"></div>
+      <div class="ramp-legend" id="field-legend"></div>
+    </article>
+
+    <article class="card">
+      <h2>Pipeline throughput</h2>
+      <p class="hint">Records committed per second, per minute</p>
+      <div class="chart" id="throughput"></div>
+    </article>
+
+    <article class="card">
+      <h2>End-to-end latency (p95)</h2>
+      <p class="hint">Sensor timestamp → database commit, milliseconds</p>
+      <div class="chart" id="latency"></div>
+    </article>
+
+    <article class="card wide">
+      <h2>Threshold alerts</h2>
+      <p class="hint">1-minute averages at or above the warning threshold · last 60 minutes</p>
+      <div class="table-wrap"><table id="alerts"></table></div>
+    </article>
+
+    <article class="card">
+      <h2>Detected anomalies</h2>
+      <p class="hint">EWMA z-score spikes · last 60 minutes</p>
+      <div class="table-wrap"><table id="anomalies"></table></div>
+    </article>
+
+    <article class="card">
+      <h2>Dead-letter queue</h2>
+      <p class="hint">Most recent rejected records</p>
+      <div class="table-wrap"><table id="dlq"></table></div>
+    </article>
+  </section>
+  <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+</div>
+<script src="/static/dashboard.js?v=2"></script>
+</body>
+</html>

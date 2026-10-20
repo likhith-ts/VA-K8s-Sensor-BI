@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: process
+  labels: { app: process }
+spec:
+  replicas: 2
+  strategy: { type: RollingUpdate, rollingUpdate: { maxUnavailable: 0, maxSurge: 1 } }
+  selector: { matchLabels: { app: process } }
+  template:
+    metadata:
+      labels: { app: process }
+      annotations: { prometheus.io/scrape: "true", prometheus.io/port: "9100" }
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: process
+          image: envbi/process:1.0
+          imagePullPolicy: IfNotPresent
+          command: ["python", "worker.py"]
+          envFrom:
+            - configMapRef: { name: envbi-config }
+          env:
+            - name: DATABASE_URL
+              valueFrom: { secretKeyRef: { name: envbi-db, key: DATABASE_URL } }
+          ports: [{ containerPort: 9100, name: metrics }]
+          readinessProbe: { httpGet: { path: /metrics, port: metrics }, periodSeconds: 5 }
+          livenessProbe: { httpGet: { path: /metrics, port: metrics }, periodSeconds: 10, failureThreshold: 3 }
+          resources:
+            # Sized to roughly one worker's full-speed CPU, so the 60% target scales
+            # with real load rather than adding pods (and contention) early.
+            requests: { cpu: 500m, memory: 128Mi }
+            limits: { cpu: "1", memory: 384Mi }
+---
+# Scales on CPU out of the box (needs metrics-server). For queue-depth
+# scaling as well, use optional/keda-process.yaml instead of this HPA.
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: process
+spec:
+  scaleTargetRef: { apiVersion: apps/v1, kind: Deployment, name: process }
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource: { name: cpu, target: { type: Utilization, averageUtilization: 60 } }
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies: [{ type: Percent, value: 100, periodSeconds: 15 }]
+    scaleDown:
+      stabilizationWindowSeconds: 120
+      policies: [{ type: Pods, value: 1, periodSeconds: 30 }]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: process-metrics
+spec:
+  selector: { app: process }
+  ports: [{ name: metrics, port: 9100, targetPort: metrics }]

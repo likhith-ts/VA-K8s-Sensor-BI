@@ -1,0 +1,77 @@
+# Single-host deployment. Also serves as the non-orchestrated baseline for the
+# scalability benchmark: one replica of each service, no autoscaling.
+#
+#   docker compose -f deploy/compose/docker-compose.yml up -d --build
+#   open http://localhost:8000
+name: envbi
+
+x-env: &env
+  MQTT_HOST: mosquitto
+  REDIS_URL: redis://redis:6379/0
+  DATABASE_URL: postgresql://envbi:envbi@timescaledb:5432/envbi
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2.0.20
+    ports: ["1883:1883"]
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+
+  redis:
+    image: redis:7.4-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    ports: ["6379:6379"]
+
+  timescaledb:
+    image: timescale/timescaledb:2.17.2-pg16
+    environment:
+      POSTGRES_USER: envbi
+      POSTGRES_PASSWORD: envbi
+      POSTGRES_DB: envbi
+    ports: ["5442:5432"]  # 5442 avoids clashing with a local Postgres
+    volumes:
+      - ../../db/init.sql:/docker-entrypoint-initdb.d/10-init.sql:ro
+      - tsdb:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U envbi -d envbi"]
+      interval: 3s
+      retries: 30
+
+  ingest:
+    build: { context: ../.., args: { SERVICE: ingest } }
+    image: envbi/ingest:1.0
+    command: ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
+    environment: *env
+    ports: ["8080:8080"]
+    depends_on: [mosquitto, redis]
+
+  process:
+    build: { context: ../.., args: { SERVICE: process } }
+    image: envbi/process:1.0
+    command: ["python", "worker.py"]
+    environment: *env
+    ports: ["9100:9100"]
+    depends_on:
+      redis: { condition: service_started }
+      timescaledb: { condition: service_healthy }
+
+  gateway:
+    build: { context: ../.., args: { SERVICE: gateway } }
+    image: envbi/gateway:1.0
+    command: ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+    environment:
+      <<: *env
+      POWERBI_PUSH_URL: ${POWERBI_PUSH_URL:-}
+    ports: ["8000:8000"]
+    depends_on:
+      timescaledb: { condition: service_healthy }
+
+  sensor-sim:
+    build: { context: ../.., args: { SERVICE: sensor-sim } }
+    image: envbi/sensor-sim:1.0
+    command: ["python", "sim.py", "--mqtt-host", "mosquitto", "--sensors", "100", "--rate", "1"]
+    depends_on: [mosquitto, ingest]
+    profiles: ["sim"]
+
+volumes:
+  tsdb:

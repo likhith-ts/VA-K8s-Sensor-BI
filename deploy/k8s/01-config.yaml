@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: envbi-config
+data:
+  MQTT_HOST: mosquitto
+  MQTT_PORT: "1883"
+  MQTT_TOPIC: $share/ingest/sensors/#
+  REDIS_URL: redis://redis:6379/0
+  RAW_STREAM: telemetry:raw
+  DLQ_STREAM: telemetry:dlq
+  CONSUMER_GROUP: processors
+  BATCH_SIZE: "500"
+  CLAIM_IDLE_MS: "30000"
+  GAP_FILL_MAX_AGE_S: "300"
+  ANOMALY_Z: "4.0"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: envbi-db
+type: Opaque
+stringData:
+  POSTGRES_USER: envbi
+  POSTGRES_PASSWORD: envbi
+  POSTGRES_DB: envbi
+  REPLICATION_PASSWORD: replicator
+  # Writes go to the primary; the gateway and Power BI read from the replica.
+  DATABASE_URL: postgresql://envbi:envbi@tsdb-primary:5432/envbi
+  READ_DATABASE_URL: postgresql://envbi:envbi@tsdb-read:5433/envbi

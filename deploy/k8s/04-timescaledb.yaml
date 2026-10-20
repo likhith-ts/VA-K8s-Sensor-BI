@@ -1,0 +1,96 @@
+# tsdb-0 is the primary; tsdb-1 is a hot-standby streaming replica that
+# serves the read-only BI traffic (gateway and Power BI DirectQuery).
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: tsdb
+  labels: { app: tsdb }
+spec:
+  serviceName: tsdb
+  replicas: 2
+  podManagementPolicy: OrderedReady
+  selector: { matchLabels: { app: tsdb } }
+  template:
+    metadata: { labels: { app: tsdb } }
+    spec:
+      securityContext: { fsGroup: 70 }
+      initContainers:
+        - name: clone-from-primary
+          image: timescale/timescaledb:2.17.2-pg16
+          securityContext: { runAsUser: 70, runAsGroup: 70 }
+          env:
+            - { name: PGDATA, value: /var/lib/postgresql/data/pgdata }
+            - name: REPLICATION_PASSWORD
+              valueFrom: { secretKeyRef: { name: envbi-db, key: REPLICATION_PASSWORD } }
+          command:
+            - bash
+            - -c
+            - |
+              set -e
+              ordinal="${HOSTNAME##*-}"
+              if [ "$ordinal" = "0" ] || [ -s "$PGDATA/PG_VERSION" ]; then exit 0; fi
+              until pg_isready -h tsdb-0.tsdb -p 5432; do echo waiting for primary; sleep 2; done
+              mkdir -p "$PGDATA" && chmod 700 "$PGDATA"
+              PGPASSWORD="$REPLICATION_PASSWORD" pg_basebackup -h tsdb-0.tsdb -U replicator \
+                -D "$PGDATA" -R -X stream --checkpoint=fast
+              echo "cloned primary into $PGDATA"
+          volumeMounts: [{ name: data, mountPath: /var/lib/postgresql/data }]
+      containers:
+        - name: timescaledb
+          image: timescale/timescaledb:2.17.2-pg16
+          envFrom: [{ secretRef: { name: envbi-db } }]
+          env:
+            - { name: PGDATA, value: /var/lib/postgresql/data/pgdata }
+            - { name: TS_TUNE_MEMORY, value: 1GB }
+          args: ["-c", "wal_level=replica", "-c", "max_wal_senders=5", "-c", "hot_standby=on",
+                 "-c", "max_connections=200", "-c", "wal_keep_size=512MB"]
+          ports: [{ containerPort: 5432, name: postgres }]
+          volumeMounts:
+            - { name: data, mountPath: /var/lib/postgresql/data }
+            - { name: init, mountPath: /docker-entrypoint-initdb.d/005-replication.sh, subPath: 00-replication.sh }
+            - { name: init, mountPath: /docker-entrypoint-initdb.d/10-init.sql, subPath: 10-init.sql }
+          readinessProbe:
+            exec: { command: ["pg_isready", "-U", "envbi", "-d", "envbi", "-h", "127.0.0.1"] }
+            periodSeconds: 5
+          livenessProbe:
+            exec: { command: ["pg_isready", "-U", "envbi", "-h", "127.0.0.1"] }
+            initialDelaySeconds: 60
+            periodSeconds: 15
+          resources:
+            requests: { cpu: 250m, memory: 512Mi }
+            limits: { memory: 1536Mi }
+      volumes:
+        - name: init
+          configMap: { name: tsdb-init }
+  volumeClaimTemplates:
+    - metadata: { name: data }
+      spec:
+        accessModes: [ReadWriteOnce]
+        resources: { requests: { storage: 5Gi } }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tsdb
+spec:
+  clusterIP: None
+  selector: { app: tsdb }
+  ports: [{ name: postgres, port: 5432 }]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tsdb-primary
+spec:
+  selector: { app: tsdb, statefulset.kubernetes.io/pod-name: tsdb-0 }
+  ports: [{ name: postgres, port: 5432, targetPort: postgres }]
+---
+# Read replica, published on localhost:5433 for Power BI DirectQuery.
+apiVersion: v1
+kind: Service
+metadata:
+  name: tsdb-read
+spec:
+  type: LoadBalancer
+  selector: { app: tsdb, statefulset.kubernetes.io/pod-name: tsdb-1 }
+  ports: [{ name: postgres, port: 5433, targetPort: postgres }]

@@ -1,0 +1,23 @@
+# In-cluster sensor fleet, useful for load tests without a host-side process.
+#   kubectl apply -f deploy/k8s/optional/load-generator.yaml
+#   kubectl -n envbi scale deploy/sensor-sim --replicas=4   # more load
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sensor-sim
+  namespace: envbi
+  labels: { app: sensor-sim }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: sensor-sim } }
+  template:
+    metadata: { labels: { app: sensor-sim } }
+    spec:
+      containers:
+        - name: sim
+          image: envbi/sensor-sim:1.0
+          imagePullPolicy: IfNotPresent
+          command: ["python", "sim.py", "--mqtt-host", "mosquitto", "--sensors", "200", "--rate", "2"]
+          resources:
+            requests: { cpu: 100m, memory: 64Mi }
+            limits: { cpu: "1", memory: 128Mi }

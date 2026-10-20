@@ -1,0 +1,921 @@
+{
+  "target": "k8s",
+  "scenario": "load",
+  "started": "2026-10-20T15:51:04.346756+00:00",
+  "args": {
+    "target": "k8s",
+    "scenario": "load",
+    "rates": [
+      200,
+      500,
+      1000,
+      2000,
+      3000
+    ],
+    "step": 60,
+    "cooldown": 10,
+    "rate": 1000,
+    "kill_at": 40,
+    "after": 80,
+    "sensors": 400,
+    "seed": 100
+  },
+  "steps": [
+    {
+      "offered_rate": 200,
+      "sent": 12000,
+      "stored": 12000,
+      "delivery_ratio": 1.0,
+      "throughput": 200.0,
+      "latency_p50_s": 0.000871,
+      "latency_p95_s": 0.001209,
+      "latency_p99_s": 0.0014570199999999998,
+      "latency_max_s": 0.015483,
+      "peak_backlog": 1,
+      "max_replicas": 2,
+      "drain_s": 5.0,
+      "samples": [
+        {
+          "t": 0.6,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 3.2,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        },
+        {
+          "t": 5.7,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 8.2,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 10.8,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 13.3,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        },
+        {
+          "t": 15.8,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        },
+        {
+          "t": 18.3,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        },
+        {
+          "t": 20.7,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        },
+        {
+          "t": 23.2,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        },
+        {
+          "t": 25.7,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        },
+        {
+          "t": 28.1,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        },
+        {
+          "t": 30.6,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 33.0,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        },
+        {
+          "t": 35.5,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 37.9,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 40.3,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        },
+        {
+          "t": 42.7,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        },
+        {
+          "t": 45.2,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        },
+        {
+          "t": 47.6,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        },
+        {
+          "t": 50.0,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        },
+        {
+          "t": 52.5,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        },
+        {
+          "t": 54.9,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        },
+        {
+          "t": 57.3,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        },
+        {
+          "t": 59.7,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        },
+        {
+          "t": 62.1,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        },
+        {
+          "t": 64.5,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        }
+      ]
+    },
+    {
+      "offered_rate": 500,
+      "sent": 30000,
+      "stored": 30000,
+      "delivery_ratio": 1.0,
+      "throughput": 500.0,
+      "latency_p50_s": 0.001147,
+      "latency_p95_s": 0.001436,
+      "latency_p99_s": 0.0017210099999999998,
+      "latency_max_s": 0.026958,
+      "peak_backlog": 2,
+      "max_replicas": 2,
+      "drain_s": 4.3,
+      "samples": [
+        {
+          "t": 0.3,
+          "lag": 0,
+          "pending": 2,
+          "replicas": 2
+        },
+        {
+          "t": 2.6,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 4.9,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 7.1,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 9.4,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 11.6,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 13.9,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 16.1,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 18.3,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 20.5,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 22.7,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        },
+        {
+          "t": 24.8,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 27.0,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 29.2,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 31.3,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 33.5,
+          "lag": 0,
+          "pending": 2,
+          "replicas": 2
+        },
+        {
+          "t": 35.6,
+          "lag": 0,
+          "pending": 2,
+          "replicas": 2
+        },
+        {
+          "t": 37.7,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 39.9,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 42.0,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 44.1,
+          "lag": 0,
+          "pending": 2,
+          "replicas": 2
+        },
+        {
+          "t": 46.3,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 48.4,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 50.5,
+          "lag": 0,
+          "pending": 2,
+          "replicas": 2
+        },
+        {
+          "t": 52.7,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 54.8,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 57.0,
+          "lag": 0,
+          "pending": 2,
+          "replicas": 2
+        },
+        {
+          "t": 59.1,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 61.3,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        },
+        {
+          "t": 63.5,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 2
+        }
+      ]
+    },
+    {
+      "offered_rate": 1000,
+      "sent": 60000,
+      "stored": 60000,
+      "delivery_ratio": 1.0,
+      "throughput": 1000.0,
+      "latency_p50_s": 0.001415,
+      "latency_p95_s": 0.002653,
+      "latency_p99_s": 0.003782,
+      "latency_max_s": 0.026864,
+      "peak_backlog": 6,
+      "max_replicas": 3,
+      "drain_s": 4.8,
+      "samples": [
+        {
+          "t": 0.2,
+          "lag": 2,
+          "pending": 4,
+          "replicas": 2
+        },
+        {
+          "t": 2.3,
+          "lag": 1,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 4.5,
+          "lag": 1,
+          "pending": 2,
+          "replicas": 2
+        },
+        {
+          "t": 6.7,
+          "lag": 0,
+          "pending": 2,
+          "replicas": 2
+        },
+        {
+          "t": 8.9,
+          "lag": 1,
+          "pending": 3,
+          "replicas": 2
+        },
+        {
+          "t": 11.1,
+          "lag": 1,
+          "pending": 4,
+          "replicas": 2
+        },
+        {
+          "t": 13.3,
+          "lag": 2,
+          "pending": 2,
+          "replicas": 2
+        },
+        {
+          "t": 15.5,
+          "lag": 2,
+          "pending": 2,
+          "replicas": 2
+        },
+        {
+          "t": 17.7,
+          "lag": 1,
+          "pending": 3,
+          "replicas": 2
+        },
+        {
+          "t": 19.9,
+          "lag": 1,
+          "pending": 3,
+          "replicas": 2
+        },
+        {
+          "t": 22.1,
+          "lag": 0,
+          "pending": 3,
+          "replicas": 2
+        },
+        {
+          "t": 24.3,
+          "lag": 0,
+          "pending": 2,
+          "replicas": 2
+        },
+        {
+          "t": 26.5,
+          "lag": 0,
+          "pending": 3,
+          "replicas": 2
+        },
+        {
+          "t": 28.7,
+          "lag": 0,
+          "pending": 3,
+          "replicas": 2
+        },
+        {
+          "t": 31.0,
+          "lag": 0,
+          "pending": 2,
+          "replicas": 2
+        },
+        {
+          "t": 33.2,
+          "lag": 0,
+          "pending": 2,
+          "replicas": 2
+        },
+        {
+          "t": 35.5,
+          "lag": 0,
+          "pending": 2,
+          "replicas": 2
+        },
+        {
+          "t": 37.7,
+          "lag": 3,
+          "pending": 1,
+          "replicas": 2
+        },
+        {
+          "t": 40.0,
+          "lag": 1,
+          "pending": 3,
+          "replicas": 2
+        },
+        {
+          "t": 42.2,
+          "lag": 0,
+          "pending": 4,
+          "replicas": 2
+        },
+        {
+          "t": 44.5,
+          "lag": 1,
+          "pending": 3,
+          "replicas": 3
+        },
+        {
+          "t": 46.8,
+          "lag": 1,
+          "pending": 3,
+          "replicas": 3
+        },
+        {
+          "t": 49.1,
+          "lag": 0,
+          "pending": 3,
+          "replicas": 3
+        },
+        {
+          "t": 51.4,
+          "lag": 0,
+          "pending": 2,
+          "replicas": 3
+        },
+        {
+          "t": 53.7,
+          "lag": 0,
+          "pending": 2,
+          "replicas": 3
+        },
+        {
+          "t": 56.0,
+          "lag": 0,
+          "pending": 3,
+          "replicas": 3
+        },
+        {
+          "t": 58.4,
+          "lag": 0,
+          "pending": 2,
+          "replicas": 3
+        },
+        {
+          "t": 60.7,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 3
+        },
+        {
+          "t": 63.0,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 3
+        }
+      ]
+    },
+    {
+      "offered_rate": 2000,
+      "sent": 120000,
+      "stored": 120000,
+      "delivery_ratio": 1.0,
+      "throughput": 2000.0,
+      "latency_p50_s": 0.001891,
+      "latency_p95_s": 0.003942,
+      "latency_p99_s": 0.006846,
+      "latency_max_s": 0.037082,
+      "peak_backlog": 24,
+      "max_replicas": 6,
+      "drain_s": 5.3,
+      "samples": [
+        {
+          "t": 0.4,
+          "lag": 6,
+          "pending": 18,
+          "replicas": 4
+        },
+        {
+          "t": 2.7,
+          "lag": 0,
+          "pending": 6,
+          "replicas": 4
+        },
+        {
+          "t": 5.1,
+          "lag": 2,
+          "pending": 3,
+          "replicas": 4
+        },
+        {
+          "t": 7.5,
+          "lag": 0,
+          "pending": 9,
+          "replicas": 4
+        },
+        {
+          "t": 9.9,
+          "lag": 0,
+          "pending": 7,
+          "replicas": 4
+        },
+        {
+          "t": 12.3,
+          "lag": 3,
+          "pending": 8,
+          "replicas": 4
+        },
+        {
+          "t": 14.7,
+          "lag": 1,
+          "pending": 8,
+          "replicas": 4
+        },
+        {
+          "t": 17.1,
+          "lag": 4,
+          "pending": 8,
+          "replicas": 4
+        },
+        {
+          "t": 19.5,
+          "lag": 0,
+          "pending": 9,
+          "replicas": 4
+        },
+        {
+          "t": 22.0,
+          "lag": 0,
+          "pending": 13,
+          "replicas": 4
+        },
+        {
+          "t": 24.4,
+          "lag": 0,
+          "pending": 7,
+          "replicas": 4
+        },
+        {
+          "t": 26.8,
+          "lag": 0,
+          "pending": 6,
+          "replicas": 4
+        },
+        {
+          "t": 29.2,
+          "lag": 3,
+          "pending": 4,
+          "replicas": 4
+        },
+        {
+          "t": 31.7,
+          "lag": 0,
+          "pending": 5,
+          "replicas": 4
+        },
+        {
+          "t": 34.1,
+          "lag": 0,
+          "pending": 8,
+          "replicas": 4
+        },
+        {
+          "t": 36.6,
+          "lag": 0,
+          "pending": 6,
+          "replicas": 4
+        },
+        {
+          "t": 39.2,
+          "lag": 1,
+          "pending": 9,
+          "replicas": 4
+        },
+        {
+          "t": 41.7,
+          "lag": 0,
+          "pending": 6,
+          "replicas": 4
+        },
+        {
+          "t": 44.2,
+          "lag": 2,
+          "pending": 10,
+          "replicas": 6
+        },
+        {
+          "t": 46.7,
+          "lag": 0,
+          "pending": 10,
+          "replicas": 6
+        },
+        {
+          "t": 49.3,
+          "lag": 1,
+          "pending": 9,
+          "replicas": 6
+        },
+        {
+          "t": 52.0,
+          "lag": 1,
+          "pending": 7,
+          "replicas": 6
+        },
+        {
+          "t": 54.5,
+          "lag": 0,
+          "pending": 9,
+          "replicas": 6
+        },
+        {
+          "t": 57.0,
+          "lag": 0,
+          "pending": 9,
+          "replicas": 6
+        },
+        {
+          "t": 59.8,
+          "lag": 0,
+          "pending": 4,
+          "replicas": 6
+        },
+        {
+          "t": 62.3,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 6
+        },
+        {
+          "t": 64.8,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 6
+        }
+      ]
+    },
+    {
+      "offered_rate": 3000,
+      "sent": 180000,
+      "stored": 180000,
+      "delivery_ratio": 1.0,
+      "throughput": 3000.0,
+      "latency_p50_s": 0.001997,
+      "latency_p95_s": 0.006112049999999992,
+      "latency_p99_s": 0.016373,
+      "latency_max_s": 0.059989,
+      "peak_backlog": 98,
+      "max_replicas": 8,
+      "drain_s": 6.5,
+      "samples": [
+        {
+          "t": 0.6,
+          "lag": 2,
+          "pending": 24,
+          "replicas": 6
+        },
+        {
+          "t": 3.3,
+          "lag": 9,
+          "pending": 11,
+          "replicas": 6
+        },
+        {
+          "t": 5.9,
+          "lag": 0,
+          "pending": 14,
+          "replicas": 6
+        },
+        {
+          "t": 8.6,
+          "lag": 8,
+          "pending": 20,
+          "replicas": 6
+        },
+        {
+          "t": 11.4,
+          "lag": 0,
+          "pending": 16,
+          "replicas": 6
+        },
+        {
+          "t": 14.1,
+          "lag": 2,
+          "pending": 18,
+          "replicas": 6
+        },
+        {
+          "t": 16.8,
+          "lag": 3,
+          "pending": 12,
+          "replicas": 6
+        },
+        {
+          "t": 19.5,
+          "lag": 2,
+          "pending": 12,
+          "replicas": 6
+        },
+        {
+          "t": 22.3,
+          "lag": 4,
+          "pending": 17,
+          "replicas": 6
+        },
+        {
+          "t": 25.2,
+          "lag": 6,
+          "pending": 20,
+          "replicas": 6
+        },
+        {
+          "t": 28.0,
+          "lag": 2,
+          "pending": 16,
+          "replicas": 6
+        },
+        {
+          "t": 30.8,
+          "lag": 1,
+          "pending": 14,
+          "replicas": 6
+        },
+        {
+          "t": 33.8,
+          "lag": 0,
+          "pending": 34,
+          "replicas": 6
+        },
+        {
+          "t": 36.8,
+          "lag": 0,
+          "pending": 13,
+          "replicas": 6
+        },
+        {
+          "t": 39.7,
+          "lag": 3,
+          "pending": 22,
+          "replicas": 6
+        },
+        {
+          "t": 42.6,
+          "lag": 4,
+          "pending": 10,
+          "replicas": 6
+        },
+        {
+          "t": 45.6,
+          "lag": 6,
+          "pending": 15,
+          "replicas": 6
+        },
+        {
+          "t": 48.5,
+          "lag": 0,
+          "pending": 10,
+          "replicas": 6
+        },
+        {
+          "t": 51.7,
+          "lag": 0,
+          "pending": 29,
+          "replicas": 6
+        },
+        {
+          "t": 54.9,
+          "lag": 0,
+          "pending": 16,
+          "replicas": 6
+        },
+        {
+          "t": 58.0,
+          "lag": 1,
+          "pending": 97,
+          "replicas": 8
+        },
+        {
+          "t": 61.0,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 8
+        },
+        {
+          "t": 64.7,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 8
+        }
+      ]
+    }
+  ]
+}

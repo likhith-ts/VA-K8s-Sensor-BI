@@ -1,0 +1,121 @@
+// DAX measures for the Environmental Sensor BI report.
+// Create a table called "Measures" (Enter data, one empty column) and add
+// each measure to it. Table names assume the bi.* views were loaded with
+// their default names (bi fact_1m, bi dim_sensor, ...); rename to match.
+
+// ---- volume ---------------------------------------------------------------
+Readings = SUM ( 'bi fact_1m'[n] )
+
+Active Sensors = DISTINCTCOUNT ( 'bi fact_1m'[sensor_id] )
+
+Sensors Online =
+CALCULATE ( COUNTROWS ( 'bi dim_sensor' ), 'bi dim_sensor'[is_online] = TRUE () )
+
+Readings per Second =
+VAR minutes = DISTINCTCOUNT ( 'bi fact_1m'[bucket] )
+RETURN DIVIDE ( [Readings], minutes * 60 )
+
+// ---- environment (reading-weighted, so sparse sensors don't skew means) ---
+Avg Temperature °C =
+DIVIDE ( SUMX ( 'bi fact_1m', 'bi fact_1m'[temperature_c] * 'bi fact_1m'[n] ), [Readings] )
+
+Avg Humidity % =
+DIVIDE ( SUMX ( 'bi fact_1m', 'bi fact_1m'[humidity] * 'bi fact_1m'[n] ), [Readings] )
+
+Avg Pressure hPa =
+DIVIDE ( SUMX ( 'bi fact_1m', 'bi fact_1m'[pressure_hpa] * 'bi fact_1m'[n] ), [Readings] )
+
+Avg PM2.5 =
+DIVIDE ( SUMX ( 'bi fact_1m', 'bi fact_1m'[pm25] * 'bi fact_1m'[n] ), [Readings] )
+
+Avg CO2 ppm =
+DIVIDE ( SUMX ( 'bi fact_1m', 'bi fact_1m'[co2] * 'bi fact_1m'[n] ), [Readings] )
+
+Avg AQI =
+DIVIDE ( SUMX ( 'bi fact_1m', 'bi fact_1m'[aqi] * 'bi fact_1m'[n] ), [Readings] )
+
+Peak AQI = MAX ( 'bi fact_1m'[aqi_max] )
+
+AQI Category =
+VAR a = [Avg AQI]
+RETURN
+    SWITCH (
+        TRUE (),
+        ISBLANK ( a ), BLANK (),
+        a <= 50, "Good",
+        a <= 100, "Moderate",
+        a <= 150, "Unhealthy for Sensitive Groups",
+        a <= 200, "Unhealthy",
+        a <= 300, "Very Unhealthy",
+        "Hazardous"
+    )
+
+// Field value for conditional formatting (Format > Background color > fx > Field value).
+AQI Status Color =
+VAR a = [Avg AQI]
+RETURN
+    SWITCH (
+        TRUE (),
+        ISBLANK ( a ), BLANK (),
+        a <= 100, "#0ca30c",
+        a <= 150, "#fab219",
+        a <= 200, "#ec835a",
+        "#d03b3b"
+    )
+
+// ---- change ---------------------------------------------------------------
+PM2.5 Previous Hour =
+VAR latestBucket = MAX ( 'bi fact_1m'[bucket] )
+RETURN
+    CALCULATE (
+        [Avg PM2.5],
+        FILTER (
+            ALL ( 'bi fact_1m'[bucket] ),
+            'bi fact_1m'[bucket] > latestBucket - 2 / 24
+                && 'bi fact_1m'[bucket] <= latestBucket - 1 / 24
+        )
+    )
+
+PM2.5 Change vs Previous Hour =
+DIVIDE ( [Avg PM2.5] - [PM2.5 Previous Hour], [PM2.5 Previous Hour] )
+
+// ---- thresholds (constant lines on line charts) ---------------------------
+PM2.5 Warning Threshold =
+LOOKUPVALUE ( 'bi dim_threshold'[warn], 'bi dim_threshold'[metric], "pm25" )
+
+PM2.5 Critical Threshold =
+LOOKUPVALUE ( 'bi dim_threshold'[critical], 'bi dim_threshold'[metric], "pm25" )
+
+AQI Warning Threshold =
+LOOKUPVALUE ( 'bi dim_threshold'[warn], 'bi dim_threshold'[metric], "aqi" )
+
+// ---- alerts and anomalies -------------------------------------------------
+Threshold Breaches = COUNTROWS ( 'bi alerts' )
+
+Critical Breaches =
+CALCULATE ( COUNTROWS ( 'bi alerts' ), 'bi alerts'[severity] = "critical" )
+
+Sensors in Breach = DISTINCTCOUNT ( 'bi alerts'[sensor_id] )
+
+Anomalous Readings = SUM ( 'bi fact_1m'[anomaly_count] )
+
+Anomaly Rate = DIVIDE ( [Anomalous Readings], [Readings] )
+
+// Text with an icon so status never relies on colour alone.
+Alert Status Label =
+VAR crit = [Critical Breaches]
+VAR warn = [Threshold Breaches] - crit
+RETURN
+    SWITCH (
+        TRUE (),
+        crit > 0, "■ " & crit & " critical",
+        warn > 0, "▲ " & warn & " warning",
+        "● all clear"
+    )
+
+// ---- pipeline health ------------------------------------------------------
+Latency p95 (s) = MAX ( 'bi kpi_now'[latency_p95_s] )
+
+Latency p50 (s) = MAX ( 'bi kpi_now'[latency_p50_s] )
+
+Pipeline Throughput (rec/s) = AVERAGE ( 'bi pipeline_1m'[records_per_s] )

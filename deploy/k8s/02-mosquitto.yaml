@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mosquitto-config
+data:
+  mosquitto.conf: |
+    listener 1883
+    allow_anonymous true
+    max_inflight_messages 1000
+    max_queued_messages 100000
+    persistence false
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mosquitto
+  labels: { app: mosquitto }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: mosquitto } }
+  template:
+    metadata: { labels: { app: mosquitto } }
+    spec:
+      containers:
+        - name: mosquitto
+          image: eclipse-mosquitto:2.0.20
+          ports: [{ containerPort: 1883, name: mqtt }]
+          volumeMounts:
+            - { name: config, mountPath: /mosquitto/config }
+          readinessProbe: { tcpSocket: { port: mqtt }, periodSeconds: 5 }
+          livenessProbe: { tcpSocket: { port: mqtt }, periodSeconds: 10 }
+          resources:
+            requests: { cpu: 100m, memory: 64Mi }
+            limits: { memory: 256Mi }
+      volumes:
+        - name: config
+          configMap: { name: mosquitto-config }
+---
+# Sensors sit outside the cluster, so the broker is exposed. On Docker Desktop
+# a LoadBalancer service is published on localhost.
+apiVersion: v1
+kind: Service
+metadata:
+  name: mosquitto
+spec:
+  type: LoadBalancer
+  selector: { app: mosquitto }
+  ports: [{ name: mqtt, port: 1883, targetPort: mqtt }]

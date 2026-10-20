@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: envbi
+resources:
+  - 00-namespace.yaml
+  - 01-config.yaml
+  - 02-mosquitto.yaml
+  - 03-redis.yaml
+  - 04-timescaledb.yaml
+  - 05-ingest.yaml
+  - 06-process.yaml
+  - 07-gateway.yaml

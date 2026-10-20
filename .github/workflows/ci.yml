@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Unit tests
+        run: |
+          pip install pytest
+          PYTHONPATH=common pytest -q tests
+      - name: Render Kubernetes manifests
+        run: kubectl kustomize deploy/k8s > /dev/null
+
+  images:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [ingest, process, gateway, sensor-sim]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build ${{ matrix.service }}
+        run: docker build --build-arg SERVICE=${{ matrix.service }} -t envbi/${{ matrix.service }}:ci .
+      - name: Import check
+        if: matrix.service != 'sensor-sim'
+        run: |
+          case "${{ matrix.service }}" in
+            process) mod=worker ;;
+            *) mod=app ;;
+          esac
+          docker run --rm envbi/${{ matrix.service }}:ci python -c "import $mod"

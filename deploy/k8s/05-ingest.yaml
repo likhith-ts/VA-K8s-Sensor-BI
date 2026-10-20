@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingest
+  labels: { app: ingest }
+spec:
+  replicas: 3
+  strategy: { type: RollingUpdate, rollingUpdate: { maxUnavailable: 0, maxSurge: 1 } }
+  selector: { matchLabels: { app: ingest } }
+  template:
+    metadata:
+      labels: { app: ingest }
+      annotations: { prometheus.io/scrape: "true", prometheus.io/port: "8080", prometheus.io/path: /metrics }
+    spec:
+      containers:
+        - name: ingest
+          image: envbi/ingest:1.0
+          imagePullPolicy: IfNotPresent
+          command: ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
+          envFrom: [{ configMapRef: { name: envbi-config } }]
+          ports: [{ containerPort: 8080, name: http }]
+          readinessProbe: { httpGet: { path: /readyz, port: http }, periodSeconds: 5 }
+          livenessProbe: { httpGet: { path: /healthz, port: http }, periodSeconds: 10, failureThreshold: 3 }
+          resources:
+            requests: { cpu: 150m, memory: 96Mi }
+            limits: { cpu: "1", memory: 256Mi }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingest
+spec:
+  type: LoadBalancer
+  selector: { app: ingest }
+  ports: [{ name: http, port: 8080, targetPort: http }]

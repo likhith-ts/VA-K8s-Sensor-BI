@@ -1,0 +1,841 @@
+{
+  "target": "k8s",
+  "scenario": "recovery",
+  "started": "2026-10-20T16:04:28.042560+00:00",
+  "args": {
+    "target": "k8s",
+    "scenario": "recovery",
+    "rates": [
+      200,
+      500,
+      1000,
+      2000,
+      3000
+    ],
+    "step": 60,
+    "cooldown": 10,
+    "rate": 1000,
+    "kill_at": 40,
+    "after": 80,
+    "sensors": 400,
+    "seed": 100
+  },
+  "rate": 1000,
+  "kill_at_s": 40,
+  "sent": 120000,
+  "stored": 120000,
+  "lost": 0,
+  "recovered": true,
+  "recovery_s": 0.9510509967803955,
+  "restored_manually": false,
+  "drain_after_run_s": 5.9,
+  "peak_backlog": 6,
+  "timeline": [
+    {
+      "t": 0,
+      "committed": 864
+    },
+    {
+      "t": 1,
+      "committed": 1000
+    },
+    {
+      "t": 2,
+      "committed": 1000
+    },
+    {
+      "t": 3,
+      "committed": 1000
+    },
+    {
+      "t": 4,
+      "committed": 1000
+    },
+    {
+      "t": 5,
+      "committed": 1000
+    },
+    {
+      "t": 6,
+      "committed": 1000
+    },
+    {
+      "t": 7,
+      "committed": 1000
+    },
+    {
+      "t": 8,
+      "committed": 1000
+    },
+    {
+      "t": 9,
+      "committed": 1000
+    },
+    {
+      "t": 10,
+      "committed": 1000
+    },
+    {
+      "t": 11,
+      "committed": 1000
+    },
+    {
+      "t": 12,
+      "committed": 1000
+    },
+    {
+      "t": 13,
+      "committed": 1000
+    },
+    {
+      "t": 14,
+      "committed": 1000
+    },
+    {
+      "t": 15,
+      "committed": 1000
+    },
+    {
+      "t": 16,
+      "committed": 1000
+    },
+    {
+      "t": 17,
+      "committed": 1000
+    },
+    {
+      "t": 18,
+      "committed": 1000
+    },
+    {
+      "t": 19,
+      "committed": 1000
+    },
+    {
+      "t": 20,
+      "committed": 1000
+    },
+    {
+      "t": 21,
+      "committed": 1000
+    },
+    {
+      "t": 22,
+      "committed": 1000
+    },
+    {
+      "t": 23,
+      "committed": 1000
+    },
+    {
+      "t": 24,
+      "committed": 1000
+    },
+    {
+      "t": 25,
+      "committed": 1000
+    },
+    {
+      "t": 26,
+      "committed": 1000
+    },
+    {
+      "t": 27,
+      "committed": 1000
+    },
+    {
+      "t": 28,
+      "committed": 1000
+    },
+    {
+      "t": 29,
+      "committed": 1000
+    },
+    {
+      "t": 30,
+      "committed": 1000
+    },
+    {
+      "t": 31,
+      "committed": 1000
+    },
+    {
+      "t": 32,
+      "committed": 1000
+    },
+    {
+      "t": 33,
+      "committed": 1000
+    },
+    {
+      "t": 34,
+      "committed": 1000
+    },
+    {
+      "t": 35,
+      "committed": 1000
+    },
+    {
+      "t": 36,
+      "committed": 1000
+    },
+    {
+      "t": 37,
+      "committed": 1000
+    },
+    {
+      "t": 38,
+      "committed": 1000
+    },
+    {
+      "t": 39,
+      "committed": 1000
+    },
+    {
+      "t": 40,
+      "committed": 172
+    },
+    {
+      "t": 41,
+      "committed": 1828
+    },
+    {
+      "t": 42,
+      "committed": 1000
+    },
+    {
+      "t": 43,
+      "committed": 1000
+    },
+    {
+      "t": 44,
+      "committed": 1000
+    },
+    {
+      "t": 45,
+      "committed": 1000
+    },
+    {
+      "t": 46,
+      "committed": 1000
+    },
+    {
+      "t": 47,
+      "committed": 1000
+    },
+    {
+      "t": 48,
+      "committed": 1000
+    },
+    {
+      "t": 49,
+      "committed": 1000
+    },
+    {
+      "t": 50,
+      "committed": 1000
+    },
+    {
+      "t": 51,
+      "committed": 1000
+    },
+    {
+      "t": 52,
+      "committed": 1000
+    },
+    {
+      "t": 53,
+      "committed": 1000
+    },
+    {
+      "t": 54,
+      "committed": 1000
+    },
+    {
+      "t": 55,
+      "committed": 1000
+    },
+    {
+      "t": 56,
+      "committed": 1000
+    },
+    {
+      "t": 57,
+      "committed": 1000
+    },
+    {
+      "t": 58,
+      "committed": 998
+    },
+    {
+      "t": 59,
+      "committed": 1002
+    },
+    {
+      "t": 60,
+      "committed": 1000
+    },
+    {
+      "t": 61,
+      "committed": 1000
+    },
+    {
+      "t": 62,
+      "committed": 1000
+    },
+    {
+      "t": 63,
+      "committed": 1000
+    },
+    {
+      "t": 64,
+      "committed": 999
+    },
+    {
+      "t": 65,
+      "committed": 1001
+    },
+    {
+      "t": 66,
+      "committed": 1000
+    },
+    {
+      "t": 67,
+      "committed": 1000
+    },
+    {
+      "t": 68,
+      "committed": 1000
+    },
+    {
+      "t": 69,
+      "committed": 1000
+    },
+    {
+      "t": 70,
+      "committed": 1000
+    },
+    {
+      "t": 71,
+      "committed": 1000
+    },
+    {
+      "t": 72,
+      "committed": 1000
+    },
+    {
+      "t": 73,
+      "committed": 1000
+    },
+    {
+      "t": 74,
+      "committed": 1000
+    },
+    {
+      "t": 75,
+      "committed": 1000
+    },
+    {
+      "t": 76,
+      "committed": 1000
+    },
+    {
+      "t": 77,
+      "committed": 1000
+    },
+    {
+      "t": 78,
+      "committed": 1000
+    },
+    {
+      "t": 79,
+      "committed": 1000
+    },
+    {
+      "t": 80,
+      "committed": 1000
+    },
+    {
+      "t": 81,
+      "committed": 1000
+    },
+    {
+      "t": 82,
+      "committed": 1000
+    },
+    {
+      "t": 83,
+      "committed": 1000
+    },
+    {
+      "t": 84,
+      "committed": 1000
+    },
+    {
+      "t": 85,
+      "committed": 1000
+    },
+    {
+      "t": 86,
+      "committed": 1000
+    },
+    {
+      "t": 87,
+      "committed": 1000
+    },
+    {
+      "t": 88,
+      "committed": 1000
+    },
+    {
+      "t": 89,
+      "committed": 1000
+    },
+    {
+      "t": 90,
+      "committed": 1000
+    },
+    {
+      "t": 91,
+      "committed": 999
+    },
+    {
+      "t": 92,
+      "committed": 1000
+    },
+    {
+      "t": 93,
+      "committed": 1001
+    },
+    {
+      "t": 94,
+      "committed": 1000
+    },
+    {
+      "t": 95,
+      "committed": 1000
+    },
+    {
+      "t": 96,
+      "committed": 999
+    },
+    {
+      "t": 97,
+      "committed": 1001
+    },
+    {
+      "t": 98,
+      "committed": 1000
+    },
+    {
+      "t": 99,
+      "committed": 1000
+    },
+    {
+      "t": 100,
+      "committed": 1000
+    },
+    {
+      "t": 101,
+      "committed": 1000
+    },
+    {
+      "t": 102,
+      "committed": 1000
+    },
+    {
+      "t": 103,
+      "committed": 1000
+    },
+    {
+      "t": 104,
+      "committed": 1000
+    },
+    {
+      "t": 105,
+      "committed": 1000
+    },
+    {
+      "t": 106,
+      "committed": 1000
+    },
+    {
+      "t": 107,
+      "committed": 1000
+    },
+    {
+      "t": 108,
+      "committed": 1000
+    },
+    {
+      "t": 109,
+      "committed": 1000
+    },
+    {
+      "t": 110,
+      "committed": 1000
+    },
+    {
+      "t": 111,
+      "committed": 1000
+    },
+    {
+      "t": 112,
+      "committed": 1000
+    },
+    {
+      "t": 113,
+      "committed": 1000
+    },
+    {
+      "t": 114,
+      "committed": 1000
+    },
+    {
+      "t": 115,
+      "committed": 1000
+    },
+    {
+      "t": 116,
+      "committed": 1000
+    },
+    {
+      "t": 117,
+      "committed": 1000
+    },
+    {
+      "t": 118,
+      "committed": 1000
+    },
+    {
+      "t": 119,
+      "committed": 1000
+    },
+    {
+      "t": 120,
+      "committed": 136
+    },
+    {
+      "t": 121,
+      "committed": 0
+    },
+    {
+      "t": 122,
+      "committed": 0
+    },
+    {
+      "t": 123,
+      "committed": 0
+    },
+    {
+      "t": 124,
+      "committed": 0
+    },
+    {
+      "t": 125,
+      "committed": 0
+    }
+  ],
+  "samples": [
+    {
+      "t": 0.5,
+      "lag": 0,
+      "pending": 4,
+      "replicas": 5
+    },
+    {
+      "t": 2.9,
+      "lag": 0,
+      "pending": 4,
+      "replicas": 5
+    },
+    {
+      "t": 5.3,
+      "lag": 0,
+      "pending": 2,
+      "replicas": 5
+    },
+    {
+      "t": 7.7,
+      "lag": 0,
+      "pending": 4,
+      "replicas": 5
+    },
+    {
+      "t": 10.1,
+      "lag": 0,
+      "pending": 3,
+      "replicas": 5
+    },
+    {
+      "t": 12.5,
+      "lag": 0,
+      "pending": 4,
+      "replicas": 5
+    },
+    {
+      "t": 15.0,
+      "lag": 0,
+      "pending": 2,
+      "replicas": 5
+    },
+    {
+      "t": 17.4,
+      "lag": 0,
+      "pending": 3,
+      "replicas": 5
+    },
+    {
+      "t": 19.8,
+      "lag": 0,
+      "pending": 4,
+      "replicas": 5
+    },
+    {
+      "t": 22.2,
+      "lag": 0,
+      "pending": 3,
+      "replicas": 5
+    },
+    {
+      "t": 24.6,
+      "lag": 0,
+      "pending": 3,
+      "replicas": 5
+    },
+    {
+      "t": 27.0,
+      "lag": 0,
+      "pending": 4,
+      "replicas": 5
+    },
+    {
+      "t": 29.5,
+      "lag": 0,
+      "pending": 4,
+      "replicas": 5
+    },
+    {
+      "t": 32.0,
+      "lag": 0,
+      "pending": 2,
+      "replicas": 5
+    },
+    {
+      "t": 34.4,
+      "lag": 0,
+      "pending": 3,
+      "replicas": 5
+    },
+    {
+      "t": 36.9,
+      "lag": 0,
+      "pending": 2,
+      "replicas": 5
+    },
+    {
+      "t": 39.3,
+      "lag": 0,
+      "pending": 4,
+      "replicas": 5
+    },
+    {
+      "t": 41.8,
+      "lag": 0,
+      "pending": 4,
+      "replicas": 5
+    },
+    {
+      "t": 44.3,
+      "lag": 0,
+      "pending": 2,
+      "replicas": 5
+    },
+    {
+      "t": 46.8,
+      "lag": 0,
+      "pending": 4,
+      "replicas": 5
+    },
+    {
+      "t": 49.3,
+      "lag": 0,
+      "pending": 4,
+      "replicas": 5
+    },
+    {
+      "t": 51.8,
+      "lag": 0,
+      "pending": 4,
+      "replicas": 5
+    },
+    {
+      "t": 54.3,
+      "lag": 0,
+      "pending": 2,
+      "replicas": 5
+    },
+    {
+      "t": 56.8,
+      "lag": 0,
+      "pending": 2,
+      "replicas": 5
+    },
+    {
+      "t": 59.3,
+      "lag": 0,
+      "pending": 3,
+      "replicas": 5
+    },
+    {
+      "t": 61.8,
+      "lag": 0,
+      "pending": 2,
+      "replicas": 5
+    },
+    {
+      "t": 64.4,
+      "lag": 0,
+      "pending": 2,
+      "replicas": 5
+    },
+    {
+      "t": 66.9,
+      "lag": 1,
+      "pending": 5,
+      "replicas": 5
+    },
+    {
+      "t": 69.4,
+      "lag": 1,
+      "pending": 2,
+      "replicas": 5
+    },
+    {
+      "t": 72.0,
+      "lag": 0,
+      "pending": 2,
+      "replicas": 5
+    },
+    {
+      "t": 74.6,
+      "lag": 0,
+      "pending": 4,
+      "replicas": 5
+    },
+    {
+      "t": 77.1,
+      "lag": 0,
+      "pending": 5,
+      "replicas": 5
+    },
+    {
+      "t": 79.7,
+      "lag": 0,
+      "pending": 4,
+      "replicas": 5
+    },
+    {
+      "t": 82.4,
+      "lag": 0,
+      "pending": 5,
+      "replicas": 5
+    },
+    {
+      "t": 84.9,
+      "lag": 0,
+      "pending": 3,
+      "replicas": 5
+    },
+    {
+      "t": 87.5,
+      "lag": 0,
+      "pending": 4,
+      "replicas": 5
+    },
+    {
+      "t": 90.1,
+      "lag": 0,
+      "pending": 3,
+      "replicas": 5
+    },
+    {
+      "t": 92.7,
+      "lag": 0,
+      "pending": 4,
+      "replicas": 5
+    },
+    {
+      "t": 95.3,
+      "lag": 0,
+      "pending": 3,
+      "replicas": 5
+    },
+    {
+      "t": 98.0,
+      "lag": 0,
+      "pending": 2,
+      "replicas": 5
+    },
+    {
+      "t": 100.6,
+      "lag": 0,
+      "pending": 3,
+      "replicas": 5
+    },
+    {
+      "t": 103.2,
+      "lag": 0,
+      "pending": 4,
+      "replicas": 5
+    },
+    {
+      "t": 105.9,
+      "lag": 1,
+      "pending": 5,
+      "replicas": 5
+    },
+    {
+      "t": 108.5,
+      "lag": 0,
+      "pending": 2,
+      "replicas": 5
+    },
+    {
+      "t": 111.2,
+      "lag": 0,
+      "pending": 2,
+      "replicas": 5
+    },
+    {
+      "t": 113.9,
+      "lag": 3,
+      "pending": 2,
+      "replicas": 5
+    },
+    {
+      "t": 116.5,
+      "lag": 0,
+      "pending": 3,
+      "replicas": 5
+    },
+    {
+      "t": 119.2,
+      "lag": 0,
+      "pending": 4,
+      "replicas": 5
+    },
+    {
+      "t": 121.8,
+      "lag": 0,
+      "pending": 0,
+      "replicas": 5
+    },
+    {
+      "t": 124.5,
+      "lag": 0,
+      "pending": 0,
+      "replicas": 5
+    }
+  ]
+}

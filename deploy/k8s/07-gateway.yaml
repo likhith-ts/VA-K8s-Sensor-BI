@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway
+  labels: { app: gateway }
+spec:
+  replicas: 2
+  strategy: { type: RollingUpdate, rollingUpdate: { maxUnavailable: 0, maxSurge: 1 } }
+  selector: { matchLabels: { app: gateway } }
+  template:
+    metadata:
+      labels: { app: gateway }
+      annotations: { prometheus.io/scrape: "true", prometheus.io/port: "8000" }
+    spec:
+      containers:
+        - name: gateway
+          image: envbi/gateway:1.0
+          imagePullPolicy: IfNotPresent
+          command: ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+          envFrom: [{ configMapRef: { name: envbi-config } }]
+          env:
+            - name: READ_DATABASE_URL
+              valueFrom: { secretKeyRef: { name: envbi-db, key: READ_DATABASE_URL } }
+            # Optional: a Power BI streaming dataset push URL.
+            - name: POWERBI_PUSH_URL
+              valueFrom: { secretKeyRef: { name: powerbi-push, key: url, optional: true } }
+          ports: [{ containerPort: 8000, name: http }]
+          # The gateway waits for the database during startup; don't let liveness kill it meanwhile.
+          startupProbe: { httpGet: { path: /healthz, port: http }, periodSeconds: 5, failureThreshold: 36 }
+          readinessProbe: { httpGet: { path: /readyz, port: http }, periodSeconds: 5 }
+          livenessProbe: { httpGet: { path: /healthz, port: http }, periodSeconds: 10 }
+          resources:
+            requests: { cpu: 100m, memory: 128Mi }
+            limits: { cpu: "1", memory: 256Mi }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway
+spec:
+  type: LoadBalancer
+  selector: { app: gateway }
+  ports: [{ name: http, port: 8000, targetPort: http }]

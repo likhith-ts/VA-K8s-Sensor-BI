@@ -1,0 +1,1005 @@
+{
+  "target": "compose",
+  "scenario": "load",
+  "started": "2026-10-20T16:07:46.276032+00:00",
+  "args": {
+    "target": "compose",
+    "scenario": "load",
+    "rates": [
+      200,
+      500,
+      1000,
+      2000,
+      3000
+    ],
+    "step": 60,
+    "cooldown": 10,
+    "rate": 1000,
+    "kill_at": 40,
+    "after": 80,
+    "sensors": 400,
+    "seed": 100
+  },
+  "steps": [
+    {
+      "offered_rate": 200,
+      "sent": 12000,
+      "stored": 12000,
+      "delivery_ratio": 1.0,
+      "throughput": 200.0,
+      "latency_p50_s": 0.000495,
+      "latency_p95_s": 0.001145,
+      "latency_p99_s": 0.001312,
+      "latency_max_s": 0.025193,
+      "peak_backlog": 1,
+      "max_replicas": 1,
+      "drain_s": 4.1,
+      "samples": [
+        {
+          "t": 0.0,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 2.0,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 4.0,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 6.0,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 8.0,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 10.1,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 12.1,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 14.1,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 16.1,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 18.1,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 20.1,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 22.1,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 24.1,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 26.2,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 28.2,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 30.2,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 32.2,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 34.2,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 36.3,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 38.3,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 40.3,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 42.3,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 44.3,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 46.4,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 48.4,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 50.4,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 52.4,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 54.5,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 56.5,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 58.5,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 60.6,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 62.6,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 64.6,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        }
+      ]
+    },
+    {
+      "offered_rate": 500,
+      "sent": 30000,
+      "stored": 30000,
+      "delivery_ratio": 1.0,
+      "throughput": 500.0,
+      "latency_p50_s": 0.001193,
+      "latency_p95_s": 0.002686,
+      "latency_p99_s": 0.0033510099999999998,
+      "latency_max_s": 0.030871,
+      "peak_backlog": 2,
+      "max_replicas": 1,
+      "drain_s": 4.3,
+      "samples": [
+        {
+          "t": 0.0,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 2.1,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 4.1,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 6.1,
+          "lag": 1,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 8.2,
+          "lag": 1,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 10.2,
+          "lag": 1,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 12.3,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 14.3,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 16.4,
+          "lag": 1,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 18.4,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 20.5,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 22.5,
+          "lag": 1,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 24.6,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 26.6,
+          "lag": 1,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 28.7,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 30.8,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 32.8,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 34.9,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 37.0,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 39.0,
+          "lag": 1,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 41.1,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 43.2,
+          "lag": 1,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 45.3,
+          "lag": 1,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 47.3,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 49.4,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 51.5,
+          "lag": 2,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 53.6,
+          "lag": 1,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 55.7,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 57.8,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 59.9,
+          "lag": 0,
+          "pending": 1,
+          "replicas": 1
+        },
+        {
+          "t": 62.0,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 64.1,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        }
+      ]
+    },
+    {
+      "offered_rate": 1000,
+      "sent": 60000,
+      "stored": 60000,
+      "delivery_ratio": 1.0,
+      "throughput": 1000.0,
+      "latency_p50_s": 0.002392,
+      "latency_p95_s": 0.003706,
+      "latency_p99_s": 0.00552217999999999,
+      "latency_max_s": 0.050074,
+      "peak_backlog": 8,
+      "max_replicas": 1,
+      "drain_s": 4.8,
+      "samples": [
+        {
+          "t": 0.1,
+          "lag": 0,
+          "pending": 5,
+          "replicas": 1
+        },
+        {
+          "t": 2.2,
+          "lag": 2,
+          "pending": 2,
+          "replicas": 1
+        },
+        {
+          "t": 4.3,
+          "lag": 2,
+          "pending": 2,
+          "replicas": 1
+        },
+        {
+          "t": 6.4,
+          "lag": 0,
+          "pending": 4,
+          "replicas": 1
+        },
+        {
+          "t": 8.5,
+          "lag": 2,
+          "pending": 2,
+          "replicas": 1
+        },
+        {
+          "t": 10.6,
+          "lag": 2,
+          "pending": 2,
+          "replicas": 1
+        },
+        {
+          "t": 12.8,
+          "lag": 2,
+          "pending": 2,
+          "replicas": 1
+        },
+        {
+          "t": 14.9,
+          "lag": 2,
+          "pending": 2,
+          "replicas": 1
+        },
+        {
+          "t": 17.0,
+          "lag": 2,
+          "pending": 4,
+          "replicas": 1
+        },
+        {
+          "t": 19.1,
+          "lag": 4,
+          "pending": 2,
+          "replicas": 1
+        },
+        {
+          "t": 21.3,
+          "lag": 0,
+          "pending": 4,
+          "replicas": 1
+        },
+        {
+          "t": 23.4,
+          "lag": 2,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 25.6,
+          "lag": 2,
+          "pending": 4,
+          "replicas": 1
+        },
+        {
+          "t": 27.7,
+          "lag": 3,
+          "pending": 3,
+          "replicas": 1
+        },
+        {
+          "t": 29.9,
+          "lag": 1,
+          "pending": 3,
+          "replicas": 1
+        },
+        {
+          "t": 32.1,
+          "lag": 2,
+          "pending": 2,
+          "replicas": 1
+        },
+        {
+          "t": 34.2,
+          "lag": 2,
+          "pending": 2,
+          "replicas": 1
+        },
+        {
+          "t": 36.4,
+          "lag": 1,
+          "pending": 2,
+          "replicas": 1
+        },
+        {
+          "t": 38.6,
+          "lag": 1,
+          "pending": 4,
+          "replicas": 1
+        },
+        {
+          "t": 40.8,
+          "lag": 4,
+          "pending": 4,
+          "replicas": 1
+        },
+        {
+          "t": 43.0,
+          "lag": 0,
+          "pending": 4,
+          "replicas": 1
+        },
+        {
+          "t": 45.2,
+          "lag": 0,
+          "pending": 4,
+          "replicas": 1
+        },
+        {
+          "t": 47.4,
+          "lag": 2,
+          "pending": 2,
+          "replicas": 1
+        },
+        {
+          "t": 49.6,
+          "lag": 0,
+          "pending": 4,
+          "replicas": 1
+        },
+        {
+          "t": 51.8,
+          "lag": 2,
+          "pending": 2,
+          "replicas": 1
+        },
+        {
+          "t": 54.1,
+          "lag": 2,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 56.3,
+          "lag": 0,
+          "pending": 2,
+          "replicas": 1
+        },
+        {
+          "t": 58.5,
+          "lag": 1,
+          "pending": 3,
+          "replicas": 1
+        },
+        {
+          "t": 60.8,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 63.0,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 65.3,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        }
+      ]
+    },
+    {
+      "offered_rate": 2000,
+      "sent": 120000,
+      "stored": 120000,
+      "delivery_ratio": 1.0,
+      "throughput": 2000.0,
+      "latency_p50_s": 0.003246,
+      "latency_p95_s": 0.005487,
+      "latency_p99_s": 0.007241009999999999,
+      "latency_max_s": 0.039561,
+      "peak_backlog": 18,
+      "max_replicas": 1,
+      "drain_s": 5.4,
+      "samples": [
+        {
+          "t": 0.3,
+          "lag": 2,
+          "pending": 12,
+          "replicas": 1
+        },
+        {
+          "t": 2.5,
+          "lag": 6,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 4.8,
+          "lag": 3,
+          "pending": 9,
+          "replicas": 1
+        },
+        {
+          "t": 7.1,
+          "lag": 5,
+          "pending": 6,
+          "replicas": 1
+        },
+        {
+          "t": 9.4,
+          "lag": 3,
+          "pending": 8,
+          "replicas": 1
+        },
+        {
+          "t": 11.7,
+          "lag": 3,
+          "pending": 9,
+          "replicas": 1
+        },
+        {
+          "t": 14.0,
+          "lag": 9,
+          "pending": 9,
+          "replicas": 1
+        },
+        {
+          "t": 16.3,
+          "lag": 3,
+          "pending": 9,
+          "replicas": 1
+        },
+        {
+          "t": 18.6,
+          "lag": 7,
+          "pending": 8,
+          "replicas": 1
+        },
+        {
+          "t": 21.0,
+          "lag": 3,
+          "pending": 9,
+          "replicas": 1
+        },
+        {
+          "t": 23.3,
+          "lag": 6,
+          "pending": 9,
+          "replicas": 1
+        },
+        {
+          "t": 25.7,
+          "lag": 6,
+          "pending": 8,
+          "replicas": 1
+        },
+        {
+          "t": 28.1,
+          "lag": 8,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 30.5,
+          "lag": 1,
+          "pending": 9,
+          "replicas": 1
+        },
+        {
+          "t": 32.9,
+          "lag": 3,
+          "pending": 9,
+          "replicas": 1
+        },
+        {
+          "t": 35.3,
+          "lag": 1,
+          "pending": 6,
+          "replicas": 1
+        },
+        {
+          "t": 37.7,
+          "lag": 0,
+          "pending": 11,
+          "replicas": 1
+        },
+        {
+          "t": 40.2,
+          "lag": 3,
+          "pending": 9,
+          "replicas": 1
+        },
+        {
+          "t": 42.6,
+          "lag": 6,
+          "pending": 9,
+          "replicas": 1
+        },
+        {
+          "t": 45.1,
+          "lag": 6,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 47.6,
+          "lag": 6,
+          "pending": 6,
+          "replicas": 1
+        },
+        {
+          "t": 50.1,
+          "lag": 3,
+          "pending": 9,
+          "replicas": 1
+        },
+        {
+          "t": 52.6,
+          "lag": 3,
+          "pending": 9,
+          "replicas": 1
+        },
+        {
+          "t": 55.0,
+          "lag": 7,
+          "pending": 8,
+          "replicas": 1
+        },
+        {
+          "t": 57.4,
+          "lag": 3,
+          "pending": 9,
+          "replicas": 1
+        },
+        {
+          "t": 59.8,
+          "lag": 7,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 62.2,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 64.7,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        }
+      ]
+    },
+    {
+      "offered_rate": 3000,
+      "sent": 180000,
+      "stored": 180000,
+      "delivery_ratio": 1.0,
+      "throughput": 3000.0,
+      "latency_p50_s": 0.006885,
+      "latency_p95_s": 0.011817049999999992,
+      "latency_p99_s": 0.048317,
+      "latency_max_s": 0.170617,
+      "peak_backlog": 47,
+      "max_replicas": 1,
+      "drain_s": 6.4,
+      "samples": [
+        {
+          "t": 0.5,
+          "lag": 12,
+          "pending": 29,
+          "replicas": 1
+        },
+        {
+          "t": 2.9,
+          "lag": 7,
+          "pending": 25,
+          "replicas": 1
+        },
+        {
+          "t": 5.4,
+          "lag": 7,
+          "pending": 23,
+          "replicas": 1
+        },
+        {
+          "t": 7.8,
+          "lag": 16,
+          "pending": 26,
+          "replicas": 1
+        },
+        {
+          "t": 10.3,
+          "lag": 8,
+          "pending": 28,
+          "replicas": 1
+        },
+        {
+          "t": 12.8,
+          "lag": 12,
+          "pending": 21,
+          "replicas": 1
+        },
+        {
+          "t": 15.3,
+          "lag": 5,
+          "pending": 20,
+          "replicas": 1
+        },
+        {
+          "t": 17.8,
+          "lag": 11,
+          "pending": 25,
+          "replicas": 1
+        },
+        {
+          "t": 20.4,
+          "lag": 8,
+          "pending": 31,
+          "replicas": 1
+        },
+        {
+          "t": 22.9,
+          "lag": 9,
+          "pending": 22,
+          "replicas": 1
+        },
+        {
+          "t": 25.5,
+          "lag": 6,
+          "pending": 22,
+          "replicas": 1
+        },
+        {
+          "t": 28.1,
+          "lag": 8,
+          "pending": 21,
+          "replicas": 1
+        },
+        {
+          "t": 30.7,
+          "lag": 12,
+          "pending": 22,
+          "replicas": 1
+        },
+        {
+          "t": 33.3,
+          "lag": 20,
+          "pending": 22,
+          "replicas": 1
+        },
+        {
+          "t": 35.9,
+          "lag": 19,
+          "pending": 28,
+          "replicas": 1
+        },
+        {
+          "t": 38.6,
+          "lag": 20,
+          "pending": 27,
+          "replicas": 1
+        },
+        {
+          "t": 41.3,
+          "lag": 5,
+          "pending": 22,
+          "replicas": 1
+        },
+        {
+          "t": 43.9,
+          "lag": 8,
+          "pending": 21,
+          "replicas": 1
+        },
+        {
+          "t": 46.6,
+          "lag": 18,
+          "pending": 22,
+          "replicas": 1
+        },
+        {
+          "t": 49.7,
+          "lag": 8,
+          "pending": 27,
+          "replicas": 1
+        },
+        {
+          "t": 52.4,
+          "lag": 18,
+          "pending": 24,
+          "replicas": 1
+        },
+        {
+          "t": 55.2,
+          "lag": 8,
+          "pending": 27,
+          "replicas": 1
+        },
+        {
+          "t": 57.9,
+          "lag": 19,
+          "pending": 26,
+          "replicas": 1
+        },
+        {
+          "t": 60.7,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 63.5,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        },
+        {
+          "t": 66.3,
+          "lag": 0,
+          "pending": 0,
+          "replicas": 1
+        }
+      ]
+    }
+  ]
+}

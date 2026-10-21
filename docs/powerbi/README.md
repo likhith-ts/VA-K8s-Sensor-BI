@@ -46,8 +46,16 @@ In the Navigator, tick these views from the `bi` schema:
 - `bi anomalies[sensor_id]` → `bi dim_sensor[sensor_id]`
 - `bi latest_by_sensor[sensor_id]` → `bi dim_sensor[sensor_id]`
 
-Then add the measures from [`measures.dax`](measures.dax): create an empty
-*Measures* table (*Home → Enter data*), and paste each measure via *New measure*.
+Then add the measures from [`measures.dax`](measures.dax) in one go:
+
+1. Open **DAX query view** (the *DAX* icon in the left rail).
+2. Paste the whole file and press **Run**. A one-row result confirms the
+   measures evaluate (the database must be running).
+3. Click **Update model with changes** above the `DEFINE` block. All 27
+   measures appear under `bi fact_1m` in the Data pane.
+
+Don't paste the file into a single *New measure* box: it holds exactly one
+measure, so the whole file fails with "The syntax for '[n]' is incorrect".
 
 ## 3. Report pages
 

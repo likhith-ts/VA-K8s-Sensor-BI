@@ -5,3 +5,4 @@ __pycache__/
 .DS_Store
 bench/results/superseded/
 docs/powerbi/project-dashboard.pbix
+demo-data/

@@ -77,6 +77,8 @@ commit; entries left pending by a crashed worker are claimed by a live one
 
 ## Run it
 
+> **Giving a live demo?** See [docs/DEMO.md](docs/DEMO.md): one command starts everything with an hour of history restored, plus a demo script and talking points.
+
 Requirements: Docker Desktop with Kubernetes enabled (or any cluster that can
 see locally built images), Python 3.11+.
 

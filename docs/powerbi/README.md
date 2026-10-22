@@ -7,6 +7,13 @@ needs no import refresh.
 > Power BI Desktop runs on Windows only. On a Mac, use a Windows VM or a lab
 > PC on the same network and replace `localhost` with the Mac's IP address.
 
+![Overview page](../images/powerbi/overview.png)
+
+The other pages: [Sensor drill-down](../images/powerbi/sensor-drilldown.png) ·
+[Anomalies](../images/powerbi/anomalies.png) ·
+[Pipeline health](../images/powerbi/pipeline.png) · full
+[PDF export](../project-dashboard-export.pdf).
+
 ## Quick start: open the prebuilt report
 
 [`project-dashboard-report.pbix`](project-dashboard-report.pbix) already

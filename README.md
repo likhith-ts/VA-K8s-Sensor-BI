@@ -9,7 +9,7 @@
 
 Visual Analytics semester project · Team 17 — Likhith Usurupati, Sai Chandra Kousthubh, Chilla Kalyan Sai Reddy
 
-![Live dashboard](docs/images/dashboard.png)
+![Live web dashboard](docs/images/dashboard.png)
 
 An end-to-end pipeline that takes environmental telemetry (temperature,
 humidity, pressure, PM2.5, PM10, CO₂) from a simulated IoT sensor field,
@@ -44,6 +44,18 @@ Sensor field ──MQTT/HTTP──▶ ┌─────────────
 | 04 Time-series storage | [`db/init.sql`](db/init.sql): TimescaleDB hypertable, compression after 1 day, 30-day retention, 1-minute / 15-minute / 1-hour continuous aggregates, a primary and a streaming read replica. |
 | 05 Power BI analytics | [`docs/powerbi`](docs/powerbi/README.md): curated `bi.*` views for DirectQuery, `.pbids` connection files, DAX measures, report layout, push streaming dataset, plus the [live dashboard](services/gateway/static/index.html). |
 | 06 Scalability evaluation | [`bench/run_bench.py`](bench/run_bench.py): load sweep and failure-recovery tests against the Kubernetes stack and the non-orchestrated Compose baseline; [`bench/report.py`](bench/report.py) produces the comparison. |
+
+## Power BI report
+
+Four DirectQuery pages over the `bi` views, built from
+[`docs/powerbi`](docs/powerbi/README.md) (full export:
+[PDF](docs/project-dashboard-export.pdf)).
+
+![Power BI overview](docs/images/powerbi/overview.png)
+
+| Sensor drill-down | Anomalies | Pipeline health |
+|---|---|---|
+| ![Sensor drill-down](docs/images/powerbi/sensor-drilldown.png) | ![Anomalies](docs/images/powerbi/anomalies.png) | ![Pipeline health](docs/images/powerbi/pipeline.png) |
 
 ## Data flow (slide 9)
 
